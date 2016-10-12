@@ -132,7 +132,11 @@ function got(url, opts, cb) {
 				});
 			}
 		}
-
+		opts.pathname = opts.pathname.replace("%27", "'");
+		opts.path = opts.path.replace("%27", "'");
+		opts.href = opts.href.replace("%27", "'");
+		url = url.replace("%27", "'");
+		
 		var req = fn.request(opts, function (response) {
 			var statusCode = response.statusCode;
 			var res = response;
